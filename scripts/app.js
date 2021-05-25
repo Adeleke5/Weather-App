@@ -3,7 +3,7 @@ const details = document.querySelector(".details");
 const imgTime = document.querySelector(".time");
 const card = document.querySelector(".card");
 
-
+//DOM operation to manage response from API curl.
 const updateUI = (latest) => {
 
     const { data, loc } = latest;
@@ -18,12 +18,12 @@ const updateUI = (latest) => {
         </div>
     `;
 
-    if (card.classList.contains("d-none")){
-        card.classList.remove("d-none");
-    }
-}
+    //managed the div to show condition
+    card.classList.contains("d-none") ? card.classList.remove("d-none") : null;
+};
 
 
+// curling functions to fetch response from endpoint.
 form.addEventListener('submit', e => {
 
     //prevent refresh after submit
@@ -37,6 +37,6 @@ form.addEventListener('submit', e => {
     .then(latest => updateUI(latest))
     .catch(err => console.log(err));
     
+    //clear form after sending input
     form.reset();   
-})
-
+});
